@@ -10,6 +10,7 @@ This is shuk's (stoyboy) personal fork of QMK firmware. It hosts custom keymaps 
 
 **Primary task:** Help with creating and refining keyboard layouts, especially for Lulu.
 
+To test if things compile as expected: `qmk compile -kb boardsource/lulu/avr -km stoyboy -e CONVERT_TO=blok`
 ## Project Overview
 
 QMK (Quantum Mechanical Keyboard) is keyboard firmware written primarily in C, targeting AVR (via LUFA) and ARM (via ChibiOS) microcontrollers. The codebase supports 1000+ keyboards with customizable keymaps, layers, and extensive peripheral support (RGB, OLED, encoders, haptics, split keyboards, etc.).
