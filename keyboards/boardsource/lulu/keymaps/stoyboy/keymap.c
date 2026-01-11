@@ -4,7 +4,8 @@ enum layers {
     _QWERTY,
     _NAV,
     _NUM,
-    _SYM
+    _SYM,
+    _MOUSE
 };
 
 // Layer switching
@@ -26,6 +27,7 @@ enum layers {
 // Thumb layer keys
 #define NAV MO(_NAV)
 #define NUM MO(_NUM)
+/* #define MOUSE MO(_MOUSE) */
 /* #define SYM MO(_SYM) */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -40,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |BackSP|M-NUM | RGUI |
+ *                   | LAlt | LGUI |MOUSE | /Space  /       \Enter \  |BackSP|M-NUM | RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -97,13 +99,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             _______,_______,      KC_0,   SPC_P,   KC_ENT,_______, _______, _______
 ),
 
-/* [_SYM] = LAYOUT_split_3x6_3( */
-/*   KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, _______,   _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, */
-/*   KC_MINS, KC_UNDS, KC_EQL, KC_PLUS, KC_GRV, _______,   _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_PIPE, */
-/*   KC_BSLS, KC_SCLN, KC_COLN, KC_QUOT, KC_DQUO, _______,   _______, KC_LT, KC_GT, KC_QUES, KC_SLSH, _______, */
-/*                      _______, _______, _______ */
-/* ) */
-
 /* SYM - WIP
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -121,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SYM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
-  XXXXXXX, XXXXXXX,  KC_DLR, KC_PERC, KC_CIRC, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,  KC_DLR, KC_PERC, KC_CIRC, XXXXXXX,                   XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              _______, KC_LPRN, KC_RPRN, KC_MINS, _______,  _______, _______, _______
   )
