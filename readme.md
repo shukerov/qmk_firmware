@@ -1,3 +1,11 @@
+# For Lily58
+```
+qmk compile -kb boardsource/lulu/avr -km stoyboy -e CONVERT_TO=blok
+```
+
+Stock Repo README below
+----------------------
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
