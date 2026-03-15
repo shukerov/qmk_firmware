@@ -11,6 +11,15 @@ This is shuk's (stoyboy) personal fork of QMK firmware. It hosts custom keymaps 
 **Primary task:** Help with creating and refining keyboard layouts, especially for Lulu.
 
 To test if things compile as expected: `qmk compile -kb boardsource/lulu/avr -km stoyboy -e CONVERT_TO=blok`
+
+## CI / GitHub Actions
+
+A custom workflow (`.github/workflows/build_stoyboy.yml`) automatically compiles the Lulu stoyboy keymap:
+- **Triggers:** on push to `keyboards/boardsource/lulu/**` or `keyboards/lily58/**`, plus manual `workflow_dispatch`
+- **What it does:** runs `qmk compile -kb boardsource/lulu/avr -km stoyboy -e CONVERT_TO=blok` inside the `ghcr.io/qmk/qmk_cli` container
+- **Artifact:** uploads the compiled firmware (`.hex`/`.bin`/`.uf2`) as `lulu-stoyboy-firmware`
+- Uses concurrency groups to cancel in-progress builds when new pushes arrive
+
 ## Project Overview
 
 QMK (Quantum Mechanical Keyboard) is keyboard firmware written primarily in C, targeting AVR (via LUFA) and ARM (via ChibiOS) microcontrollers. The codebase supports 1000+ keyboards with customizable keymaps, layers, and extensive peripheral support (RGB, OLED, encoders, haptics, split keyboards, etc.).

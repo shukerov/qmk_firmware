@@ -1,7 +1,22 @@
-# For Lily58
-```
+# stoyboy's QMK Fork
+
+Personal fork of [QMK firmware](https://github.com/qmk/qmk_firmware) for custom keyboard layouts.
+
+## Keyboards
+
+- **Boardsource Lulu** (Lily58 variant) — keymap at [`keyboards/boardsource/lulu/keymaps/stoyboy/`](keyboards/boardsource/lulu/keymaps/stoyboy/)
+
+## Build
+
+```bash
 qmk compile -kb boardsource/lulu/avr -km stoyboy -e CONVERT_TO=blok
 ```
+
+## CI
+
+A GitHub Actions workflow automatically compiles the firmware on every push to the Lulu or Lily58 keyboard paths. The compiled firmware (`.hex`/`.bin`/`.uf2`) is uploaded as a build artifact (`lulu-stoyboy-firmware`). You can also trigger a build manually via `workflow_dispatch`.
+
+---
 
 Stock Repo README below
 ----------------------

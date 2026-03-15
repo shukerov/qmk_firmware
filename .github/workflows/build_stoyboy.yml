@@ -1,0 +1,42 @@
+name: Build Stoyboy Keymap
+
+on:
+  push:
+    paths:
+      - 'keyboards/boardsource/lulu/**'
+      - 'keyboards/lily58/**'
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Compile Lulu keymap
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+
+    steps:
+      - name: Disable safe.directory check
+        run: git config --global --add safe.directory '*'
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: pip3 install -r requirements-dev.txt
+
+      - name: Compile firmware
+        run: qmk compile -kb boardsource/lulu/avr -km stoyboy -e CONVERT_TO=blok
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: lulu-stoyboy-firmware
+          path: |
+            *.hex
+            *.bin
+            *.uf2
