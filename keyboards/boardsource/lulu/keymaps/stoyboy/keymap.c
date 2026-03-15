@@ -2,11 +2,11 @@
 
 enum layers {
     _QWERTY,
+    _GAMING,
     _NAV,
     _NUM,
     _SYM,
-    _MOUSE,
-    _GAMING
+    _MOUSE
 };
 
 // Layer switching
