@@ -6,7 +6,8 @@ enum layers {
     _NAV,
     _NUM,
     _SYM,
-    _MOUSE
+    _MOUSE,
+    _MAC
 };
 
 // Layer switching
@@ -106,18 +107,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |  &   |  *   |  (   |  \   |                    |      |      |      |      |      | MSWAP|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  $   |  %   |  ^   | =&+  |-------.    ,-------|      |  {   |   }  |      |      |      |
+ * |      |      |  $   |  %   |  ^   | =&+  |-------.    ,-------|      |  {   |   }  |      |      | TMAC |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|      |  !   |  @   |  #   |  |   |-------|    |-------|      |  [   |   ]  |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt |  (   |  )   | /  -&_  /       \      \  |      |      |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
+ * GAME  = toggle Gaming layer
+ * MSWAP = swap Cmd/Ctrl (CG_TOGG, for Mac/Win switching)
+ * TMAC  = toggle Mac media layer
  */
   [_SYM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(_GAMING),
   XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSLS,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
-  XXXXXXX, XXXXXXX,  KC_DLR, KC_PERC, KC_CIRC, 	KC_EQL,                   XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,  KC_DLR, KC_PERC, KC_CIRC, 	KC_EQL,                   XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, TG(_MAC),
   KC_LSFT, XXXXXXX, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
                              _______, KC_LPRN, KC_RPRN, KC_MINS, _______,  _______, _______, _______
   ),
@@ -167,5 +171,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                               KC_LALT, KC_LGUI, NAV, KC_SPC,  KC_ENT, KC_BSPC, MO(_SYM), KC_RGUI
+  ),
+
+/* MAC - Media controls for macOS
+ * Toggle this layer via TMAC in the SYM layer.
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |                    |      | Prev |Play/ | Next |      |      |
+ * |      |      |      |      |      |      |                    |      |      |Pause |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |-------.    ,-------| Mute | VolD | VolU | BriD | BriU |      |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   |      |      |      | /       /       \      \  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ *
+ * Right hand home row (HJKL;):  Mute | VolD | VolU | BriD | BriU
+ * Right hand top row  (YUIOP):       | Prev | Play | Next |
+ */
+  [_MAC] = LAYOUT(
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                             _______, _______, _______, _______, _______,  _______, _______, _______
   )
 };
