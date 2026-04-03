@@ -104,11 +104,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      | GAME |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  &   |  *   |  (   |  \   |                    |      |      |      |      |      | MSWAP|
+ * |  ~   |  !   |  @   |  #   |  $   |  %   |                    |  ^   |  &   |  *   |  (   |  )   | MSWAP|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  $   |  %   |  ^   | =&+  |-------.    ,-------|      |  {   |   }  |      |      |      |
+ * |      |      |      |      |      |      |-------.    ,-------|      |  {   |   }  |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |LShift|      |  !   |  @   |  #   |  |   |-------|    |-------|      |  [   |   ]  |      |      |      |
+ * |LShift|      |      |      |      |      |-------|    |-------|      |  [   |   ]  |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt |  (   |  )   | /  -&_  /       \      \  |      |      |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -116,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_SYM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(_GAMING),
-  XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSLS,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
-  XXXXXXX, XXXXXXX,  KC_DLR, KC_PERC, KC_CIRC, 	KC_EQL,                   XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_LSFT, XXXXXXX, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, CG_TOGG,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
                              _______, KC_LPRN, KC_RPRN, KC_MINS, _______,  _______, _______, _______
   ),
 
